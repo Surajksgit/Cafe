@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Route Café - Brewed To Perfection</title>
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for clean UI --><script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom font and scroll-behavior */
+        html { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth;
+        }
+
+        /* Accent Color for links and buttons (Warm Spice Gold/Brown) */
+        .accent-color { color: #A8715A; }
+        .bg-accent { background-color: #A8715A; }
+        .hover\:bg-accent-dark:hover { background-color: #8C5B42; }
+
+        /* Dark background color for main dark sections */
+        .bg-dark-primary { background-color: #262626; }
+        .text-dark-light { color: #E5E5E5; }
+        
+        /* Utility class to hide the mobile menu */
+        .hidden-mobile-menu { display: none; }
+
+        /* Custom style for the large hero section title to match the image's clean line-height */
+        .hero-title {
+            line-height: 1.1;
+        }
+
+        /* Custom text shadow for better readability on light background */
+        .text-shadow-light {
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#262626',
+                        'brand-accent': '#A8715A', /* Spice Gold/Brown */
+                        'brand-light': '#E5E5E5',
+                        'hero-bg-light': '#FAE1C0', /* Custom color matching coffee image background */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-900">
+
+    <!-- Header and Navigation --><header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo --><a href="#" class="text-2xl font-black accent-color tracking-wide flex items-center">
+                <i data-lucide="coffee" class="w-6 h-6 mr-2"></i>
+                Spice Route Café
+            </a>
+
+            <!-- Desktop Navigation --><nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-700">
+                <a href="#shop" class="hover:accent-color transition duration-200">Shop</a>
+                <a href="#about" class="hover:accent-color transition duration-200">About</a>
+                <a href="#blog" class="hover:accent-color transition duration-200">Blog</a>
+                <a href="#locations" class="hover:accent-color transition duration-200">Locations</a>
+                <a href="#contact" class="hover:accent-color transition duration-200">Contact</a>
+            </nav>
+
+            <!-- Order Button and Mobile Toggle --><div class="flex items-center space-x-4">
+                <a href="#" class="hidden md:inline-block px-5 py-2 text-sm font-semibold text-white bg-brand-accent rounded-lg shadow-lg hover:bg-accent-dark transition duration-300">
+                    Order Online
+                </a>
+                <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-accent">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu --><div id="mobile-menu" class="hidden-mobile-menu md:hidden bg-white shadow-xl transition-all duration-300 ease-in-out">
+            <nav class="flex flex-col p-4 text-gray-700 font-medium space-y-2">
+                <a href="#shop" class="block px-3 py-2 hover:bg-gray-50 rounded-md">Shop</a>
+                <a href="#about" class="block px-3 py-2 hover:bg-gray-50 rounded-md">About</a>
+                <a href="#blog" class="block px-3 py-2 hover:bg-gray-50 rounded-md">Blog</a>
+                <a href="#locations" class="block px-3 py-2 hover:bg-gray-50 rounded-md">Locations</a>
+                <a href="#contact" class="block px-3 py-2 hover:bg-gray-50 rounded-md">Contact</a>
+                <a href="#" class="block mt-2 px-3 py-2 text-center text-white bg-brand-accent rounded-md hover:bg-accent-dark">Order Online</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <!-- 1. Hero Section: Brewed to Perfection --><section class="min-h-[70vh] flex items-center bg-hero-bg-light py-16 px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <!-- Left Content --><div class="lg:col-span-3">
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 hero-title text-shadow-light">
+                        Brewed To Perfection, <br class="hidden md:block"> Served With Love.
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-lg mb-8">
+                        Indulge in handcrafted coffee, freshly baked pastries, and a welcoming atmosphere designed to inspire and energize.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="px-8 py-3 text-lg font-semibold text-white bg-brand-accent rounded-lg shadow-xl hover:bg-accent-dark transition duration-300 text-center">
+                            Order Online
+                        </a>
+                        <a href="#locations" class="px-8 py-3 text-lg font-semibold border-2 border-brand-accent text-brand-accent rounded-lg hover:bg-brand-accent/10 transition duration-300 text-center">
+                            Find a Location
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image --><div class="lg:col-span-2 flex justify-center lg:justify-end">
+                    <!-- Placeholder image matching the dark cup on light background aesthetic --><img src="images/pngwing.com.png" 
+                         alt="A perfectly brewed cup of espresso with crema" 
+                         class="w-full max-w-sm rounded-full  object-cover aspect-square"
+                         onerror="this.onerror=null; this.src='images/pngwing.com.png'">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Handmade Just For You Section --><section id="shop" class="py-20 md:py-32 bg-dark-primary text-dark-light px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Image/Content (Reversed layout for this section) --><div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Placeholder image for coffee beans and cups --><img src="images/vecteezy_coffee-cup-and-beans-on-a-table-background_48133745.jpg" 
+                         alt="Coffee beans and paper cups" 
+                         class="w-full max-w-xl rounded-lg shadow-2xl object-cover"
+                         onerror="this.onerror=null; this.src='images/vecteezy_coffee-cup-and-beans-on-a-table-background_48133745.jpg'">
+                </div>
+                
+                <!-- Right Content --><div class="order-1 lg:order-2">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                        Handmade Just For You
+                    </h2>
+                    <p class="text-lg text-gray-400 max-w-lg mb-6">
+                        Our organically grown coffee beans are roasted over an open flame in a one-of-a-kind, brick roaster. There's nothing quite like a cup from the Spice Route Café.
+                    </p>
+                    <a href="#" class="inline-flex items-center text-brand-accent text-lg font-semibold hover:opacity-80 transition duration-300">
+                        View our menu <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Inspired by the Spice Route Section --><section id="about" class="py-20 md:py-32 bg-dark-primary text-dark-light px-6 lg:px-8 border-t border-white/10">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content --><div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                        Inspired by the Spice Route
+                    </h2>
+                    <p class="text-lg text-gray-400 max-w-lg mb-6">
+                        Welcome to Spice Route Café, where the aroma of exotic spices meets the deep, earthy notes of our finest coffee. It is a sensory journey where travelers gather, ideas spark, and every sip tells a story of distant lands.
+                    </p>
+                    <p class="text-lg text-gray-400 max-w-lg mb-8">
+                        Come and experience the soul of the Spice Route in every cup and bite—we promise it will be an adventure.
+                    </p>
+                    <a href="#" class="inline-flex items-center text-brand-accent text-lg font-semibold hover:opacity-80 transition duration-300">
+                        Learn More <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Right Image --><div class="flex justify-center lg:justify-end">
+                    <!-- Placeholder image for a cozy interior --><img src="images/interior.png" 
+                         alt="Cozy, dimly lit cafe interior" 
+                         class="w-full max-w-xl rounded-lg shadow-2xl object-cover"
+                         onerror="this.onerror=null; this.src='images/interior.png'">
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Social Media and Photo Grid Section --><section class="py-20 bg-dark-primary text-dark-light px-6 lg:px-8 border-t border-white/10">
+            <div class="max-w-7xl mx-auto">
+                <!-- Social Handles --><div class="flex flex-col sm:flex-row justify-center sm:justify-around text-center space-y-8 sm:space-y-0 mb-12">
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="instagram" class="w-8 h-8 accent-color mb-2"></i>
+                        <span class="text-2xl font-bold">#SpiceRouteCafe</span>
+                        <span class="text-gray-400 text-sm">@spiceroutecafe</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="facebook" class="w-8 h-8 accent-color mb-2"></i>
+                        <span class="text-2xl font-bold">Follow Us</span>
+                        <span class="text-gray-400 text-sm">@spiceroutebrewery</span>
+                    </div>
+                </div>
+
+                <!-- Photo Grid --><div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-8">
+                    <!-- Image 1 --><img src="images/ananthan-chithiraikani-DPBWHb2X81w-unsplash.jpg" 
+                         alt="Coffee and croissant" 
+                         class="w-full h-full object-cover aspect-square hover:opacity-90 transition duration-300 rounded-lg"
+                         onerror="this.onerror=null; this.src='images/andrey-grodz-gNfXpDPl6Vk-unsplash.jpg'">
+                    <!-- Image 2 --><img src="images/montatip-lilitsanong-EkqqtZTw3WE-unsplash.jpg" 
+                         alt="Three shots of espresso" 
+                         class="w-full h-full object-cover aspect-square hover:opacity-90 transition duration-300 rounded-lg"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/404040/A8715A?text=Three+Shots'">
+                    <!-- Image 3 --><img src="images/Gemini_Generated_Image_smrc2ysmrc2ysmrc.png" 
+                         alt="Overhead view of latte art" 
+                         class="w-full h-full object-cover aspect-square hover:opacity-90 transition duration-300 rounded-lg"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/404040/A8715A?text=Latte+Art+Overhead'">
+                    <!-- Image 4 --><img src="images/ayaneshu-bhardwaj-zIBXP3Zm8kI-unsplash.jpg" 
+                         alt="Barista pouring milk for latte" 
+                         class="w-full h-full object-cover aspect-square hover:opacity-90 transition duration-300 rounded-lg"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/404040/A8715A?text=Pouring+Milk'">
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Locations Section --><section id="locations" class="py-20 md:py-32 bg-dark-primary text-dark-light px-6 lg:px-8 border-t border-white/10">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-12 text-center">
+                    Locations
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-400">
+                    <!-- Location 1: Mumbai --><div>
+                        <h3 class="text-xl font-bold mb-3 text-dark-light">Kerala</h3>
+                        <p>Colaba Causeway, 100/A</p>
+                        <p>Near Gateway of India</p>
+                        <p>Mumbai, India</p>
+                    </div>
+
+                    <!-- Location 2: Istanbul --><div>
+                        <h3 class="text-xl font-bold mb-3 text-dark-light">Tamil Nadu</h3>
+                        <p>Istiklal St, Pera 34330</p>
+                        <p>Near Galata Tower</p>
+                        <p>Beyoğlu, Turkey</p>
+                    </div>
+
+                    <!-- Location 3: Zanzibar --><div>
+                        <h3 class="text-xl font-bold mb-3 text-dark-light">Banguluru</h3>
+                        <p>Stone Town, Market Rd, 12</p>
+                        <p>Zanzibar City, Tanzania</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-dark-primary text-dark-light py-10 px-6 lg:px-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            
+            <!-- Branding & Slogan --><div>
+                <a href="#" class="text-2xl font-black accent-color tracking-wide flex items-center mb-2">
+                    <i data-lucide="coffee" class="w-6 h-6 mr-2"></i>
+                    Spice Route Café
+                </a>
+                <p class="text-sm text-gray-400">Brewed to Perfection, Served With Love</p>
+            </div>
+
+            <!-- Newsletter Signup --><div id="contact">
+                <p class="text-lg font-semibold mb-4 text-dark-light">
+                    Join our newsletter to receive exclusive updates and news!
+                </p>
+                <form onsubmit="handleNewsletterSignup(event)" class="flex space-x-2">
+                    <input type="email" placeholder="Enter your email" required
+                           class="flex-grow p-3 text-sm rounded-lg bg-gray-700 border border-gray-600 text-dark-light focus:outline-none focus:ring-1 focus:ring-brand-accent">
+                    <button type="submit" class="px-5 py-3 text-sm font-semibold text-white bg-brand-accent rounded-lg hover:bg-accent-dark transition duration-300">
+                        Subscribe
+                    </button>
+                </form>
+                <div id="newsletter-message" class="mt-2 text-sm text-green-400 hidden"></div>
+            </div>
+
+            <!-- Legal and Social Icons --><div class="md:text-right">
+                <a href="#" class="block text-sm text-gray-400 hover:text-brand-accent mb-1">Privacy</a>
+                <a href="#" class="block text-sm text-gray-400 hover:text-brand-accent mb-1">Terms</a>
+                <a href="#" class="block text-sm text-gray-400 hover:text-brand-accent mb-1">Cookies</a>
+            </div>
+
+        </div>
+
+        <!-- Copyright --><div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+            <p>&copy; 2025 Spice Route Café. All Rights Reserved.</p>
+            <div class="flex space-x-4 mt-4 sm:mt-0">
+                <a href="instagram_SpiceRouteCafe"><i data-lucide="instagram" class="w-5 h-5 hover:text-brand-accent transition"></i></a>
+                <a href="facebook_SpiceRouteCafe"><i data-lucide="facebook" class="w-5 h-5 hover:text-brand-accent transition"></i></a>
+                <a href="SpiceRouteCafe@gmail"><i data-lucide="mail" class="w-5 h-5 hover:text-brand-accent transition"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity --><script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden-mobile-menu');
+            
+            // Toggle icon for better UX
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden-mobile-menu')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Re-render icon
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden-mobile-menu');
+                mobileMenuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // 2. Simulated Form Submission
+        function handleNewsletterSignup(event) {
+            event.preventDefault(); // Stop the form from submitting normally
+            
+            const messageBox = document.getElementById('newsletter-message');
+            const emailInput = event.target.querySelector('input[type="email"]');
+
+            // Show success message
+            messageBox.textContent = 'Subscribed! Check your inbox for confirmation.';
+            messageBox.classList.remove('hidden');
+            
+            // Clear input and hide message after a few seconds
+            setTimeout(() => {
+                emailInput.value = '';
+                messageBox.classList.add('hidden');
+            }, 4000); 
+        }
+    </script>
+</body>
+</html>
