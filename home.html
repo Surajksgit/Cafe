@@ -92,32 +92,45 @@
 
     <main class="pt-20">
         
-        <!-- 1. Hero Section: Brewed to Perfection --><section class="min-h-[70vh] flex items-center bg-hero-bg-light py-16 px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-                <!-- Left Content --><div class="lg:col-span-3">
-                    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 hero-title text-shadow-light">
-                        Brewed To Perfection, <br class="hidden md:block"> Served With Love.
-                    </h1>
-                    <p class="text-lg text-gray-600 max-w-lg mb-8">
-                        Indulge in handcrafted coffee, freshly baked pastries, and a welcoming atmosphere designed to inspire and energize.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#" class="px-8 py-3 text-lg font-semibold text-white bg-brand-accent rounded-lg shadow-xl hover:bg-accent-dark transition duration-300 text-center">
-                            Order Online
-                        </a>
-                        <a href="#locations" class="px-8 py-3 text-lg font-semibold border-2 border-brand-accent text-brand-accent rounded-lg hover:bg-brand-accent/10 transition duration-300 text-center">
-                            Find a Location
-                        </a>
-                    </div>
-                </div>
+        <!-- 1. Hero Section: Brewed to Perfection -->
+<section class="min-h-[85vh] flex items-center bg-coffee-texture py-16 px-6 lg:px-12 rounded-b-2xl shadow-xl">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                <!-- Right Image --><div class="lg:col-span-2 flex justify-center lg:justify-end">
-                    <!-- Placeholder image matching the dark cup on light background aesthetic --><img src="images/pngwing.com.png" 
-                         alt="A perfectly brewed cup of espresso with crema" 
-                         class="w-full max-w-sm rounded-full  object-cover aspect-square"
-                         onerror="this.onerror=null; this.src='images/pngwing.com.png'">
-                </div>
+        <!-- Left Content: Text and CTAs -->
+        <div class="order-2 lg:order-1">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-brand-primary hero-text-shadow leading-tight">
+                Brewed To Perfection, <br> Served With Love.
+            </h1>
+            <p class="text-xl text-gray-700 max-w-lg mb-10 border-l-4 border-brand-accent pl-4 italic">
+                Indulge in handcrafted coffee, freshly baked pastries, and a welcoming atmosphere designed to inspire and energize.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <!-- Primary Button (Order) -->
+                <a href="#order" class="group px-8 py-4 text-lg font-bold text-white bg-brand-accent rounded-xl shadow-lg shadow-brand-accent/40 hover:shadow-xl hover:bg-brand-primary transition duration-500 transform hover:-translate-y-1 text-center">
+                    Order Online Now
+                </a>
+                <!-- Secondary Button (Location) -->
+                <a href="#locations" class="px-8 py-4 text-lg font-bold border-2 border-brand-accent text-brand-primary rounded-xl hover:bg-brand-accent/10 transition duration-500 text-center">
+                    Find a Location
+                </a>
             </div>
+        </div>
+
+        <!-- Right Content: Image Card -->
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+            <!-- Decorative circle behind the cup -->
+            <div class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 bg-brand-accent/30 rounded-full blur-3xl opacity-50"></div>
+
+            <!-- Image Card with heavy shadow and rotation -->
+            <div class="p-4 bg-white/70 backdrop-blur-sm rounded-3xl shadow-3xl transform rotate-3 hover:rotate-0 transition duration-700 w-11/12 max-w-sm lg:max-w-md">
+                <img src="images/montatip-lilitsanong-EkqqtZTw3WE-unsplash.jpg"
+                     alt="A perfectly brewed cup of espresso with crema"
+                     class="w-full h-auto rounded-2xl object-cover aspect-square border-4 border-brand-light"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x600/4A2C2A/D4A373?text=Perfect+Latte'">
+            </div>
+
+        </div>
+    </div>
         </section>
 
         <!-- 2. Handmade Just For You Section --><section id="shop" class="py-20 md:py-32 bg-dark-primary text-dark-light px-6 lg:px-8">
