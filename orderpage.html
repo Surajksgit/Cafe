@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online - Spice Route Café</title>
+    <link rel="stylesheet" href="orderpage.css">
+    <script src="orderpage.js" defer></script>
+    <!-- Importing Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+</head>
+
+<body>
+
+    <header class="new-header">
+        <div class="header-inner">
+            <a href="index.html" class="new-logo">
+                <i data-lucide="coffee" class="logo-icon"></i>
+                Spice Route Café
+            </a>
+
+            <div class="new-actions">
+                <a href="home.html" class="order-btn">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="order-layout">
+            
+            <!-- Menu Section -->
+            <section class="menu-section">
+                <h1 class="menu-title">The Menu</h1>
+                <div id="products-list">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Cart Section -->
+            <aside class="cart-section">
+                <div class="cart-container">
+                    <h2 class="cart-heading">
+                        <i data-lucide="shopping-cart" class="logo-icon"></i> 
+                        Your Order
+                    </h2>
+                    
+                    <div id="cart-items">
+                        <!-- Cart items will be dynamically loaded here -->
+                        <p class="text-gray-400 text-sm">Your cart is currently empty. Add some spice!</p>
+                    </div>
+
+                    <div class="cart-summary">
+                        <span>Total:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+
+                    <button id="checkout-btn" class="checkout-btn" disabled>
+                        Proceed to Checkout
+                    </button>
+                    <div id="checkout-message" class="newsletter-message hidden" style="color: #86EFAC; margin-top: 1rem;"></div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="copyright-section">
+            <p>&copy; 2025 Spice Route Café. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
