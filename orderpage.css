@@ -350,20 +350,164 @@
         /* ---------------------------------------------------- */
         /* 3. Footer (Reused) */
         /* ---------------------------------------------------- */
-        .footer {
-            background-color: var(--brand-dark);
-            color: var(--text-dark-light);
-            padding: 2.5rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
-        }
+        
+.footer {
+    background-color: var(--brand-dark);
+    color: var(--text-dark-light);
+    padding: 2.5rem 1.5rem; /* py-10 px-6 */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-        .copyright-section {
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.875rem;
-            color: #6B7280;
-        }
+@media (min-width: 1024px) {
+    .footer {
+        padding-left: 2rem; /* lg:px-8 */
+        padding-right: 2rem;
+    }
+}
+
+.footer-container {
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* gap-12 */
+    align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.footer-logo {
+    color: var(--brand-accent);
+    margin-bottom: 0.5rem;
+}
+
+.footer-slogan {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-gray-medium);
+}
+
+/* Newsletter */
+.newsletter-heading {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+    color: var(--text-dark-light);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem; /* space-x-2 */
+}
+
+.newsletter-input {
+    flex-grow: 1;
+    padding: 0.75rem; /* p-3 */
+    font-size: 0.875rem; /* text-sm */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #4B5563; /* bg-gray-700 */
+    border: 1px solid #4B5563; /* border-gray-600 */
+    color: var(--text-dark-light);
+    outline: none;
+}
+
+.newsletter-input:focus {
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 1px var(--brand-accent); /* focus:ring-1 focus:ring-brand-accent */
+}
+
+.btn-subscribe {
+    padding: 0.75rem 1.25rem; /* px-5 py-3 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    background-color: var(--brand-accent);
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: background-color 300ms ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-subscribe:hover {
+    background-color: var(--brand-accent-dark);
+}
+
+.newsletter-message {
+    margin-top: 0.5rem; /* mt-2 */
+    font-size: 0.875rem; /* text-sm */
+    color: #86EFAC; /* text-green-400 */
+}
+
+/* Legal Links */
+
+
+@media (min-width: 768px) {
+    .footer-links {
+        text-align: right;
+    }
+}
+
+.footer-link-item {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    color: #9CA3AF; /* text-gray-400 */
+    margin-bottom: 0.25rem; /* mb-1 */
+    text-decoration: none;
+    transition: color 300ms ease;
+}
+
+.footer-link-item:hover {
+    color: var(--brand-accent);
+}
+
+/* Copyright */
+.copyright-section {
+    margin-top: 2.5rem; /* mt-10 */
+    padding-top: 1.5rem; /* pt-6 */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem; /* text-sm */
+    color: #6B7280; /* text-gray-500 */
+}
+
+@media (min-width: 640px) {
+    .copyright-section {
+        flex-direction: row;
+    }
+}
+
+.social-icons-footer {
+    display: flex;
+    gap: 1rem; /* space-x-4 */
+    margin-top: 1rem; /* mt-4 */
+}
+
+@media (min-width: 640px) {
+    .social-icons-footer {
+        margin-top: 0; /* sm:mt-0 */
+    }
+}
+
+.social-icon-sm {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6B7280;
+    transition: color 300ms ease;
+}
+
+.social-icons-footer a:hover .social-icon-sm {
+    color: var(--brand-accent);
+}
+
+/* Override Lucide icons default display */
+[data-lucide] {
+    display: inline-block;
+}
     

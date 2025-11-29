@@ -69,8 +69,46 @@
     </main>
 
     <footer class="footer">
+        <div class="footer-container">
+            
+            <div>
+                <a style="text-decoration: none; font-weight: bolder; font-size: 20px; color: #D97706; " href="#" class="logo footer-logo">
+                    <i data-lucide="coffee" class="logo-icon"></i>
+                    Spice Route Café
+                </a>
+                <p class="footer-slogan">Brewed to Perfection, Served With Love</p>
+            </div>
+
+            <div id="contact" class="newsletter-signup">
+                <p class="newsletter-heading">
+                    Join our newsletter to receive exclusive updates and news!
+                </p>
+                <form onsubmit="handleNewsletterSignup(event)" class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required
+                            class="newsletter-input">
+                    <button type="submit" class="btn-subscribe">
+                        Subscribe
+                    </button>
+                </form>
+                <div id="newsletter-message" class="newsletter-message hidden"></div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#" class="footer-link-item">Privacy</a>
+                <a href="#" class="footer-link-item">Terms</a>
+                <a href="#" class="footer-link-item">Cookies</a>
+            </div>
+
+        </div>
+
         <div class="copyright-section">
             <p>&copy; 2025 Spice Route Café. All Rights Reserved.</p>
+            <div class="social-icons-footer">
+                <a href="twitter_SpiceRouteCafe"><i data-lucide="twitter" class="social-icon-sm"></i></a>
+                <a href="instagram_SpiceRouteCafe"><i data-lucide="instagram" class="social-icon-sm"></i></a>
+                <a href="facebook_SpiceRouteCafe"><i data-lucide="facebook" class="social-icon-sm"></i></a>
+                <a href="SpiceRouteCafe@gmail"><i data-lucide="mail" class="social-icon-sm"></i></a>
+            </div>
         </div>
     </footer>
 
