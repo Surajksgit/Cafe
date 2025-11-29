@@ -9,47 +9,46 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
 });
 
-// Function to handle the Mobile Menu Toggle logic
+// Function to handle the Mobile Menu Toggle logic for the new full-screen design
 function setupMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
     
-    if (!mobileMenuBtn || !mobileMenu) return; // Exit if elements aren't found
+    // Exit if essential elements aren't found
+    if (!mobileMenuBtn || !closeMenuBtn || !mobileMenu) return; 
 
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden-mobile-menu');
-        
-        // Toggle icon for better UX
-        const icon = mobileMenuBtn.querySelector('.mobile-menu-icon');
-        if (icon) {
-            if (mobileMenu.classList.contains('hidden-mobile-menu')) {
-                icon.setAttribute('data-lucide', 'menu');
-            } else {
-                icon.setAttribute('data-lucide', 'x');
-            }
-             // Re-render icon if lucide is available
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons(); 
-            }
-        }
-    });
+    // --- Helper Functions ---
+    
+    // Function to open the menu
+    const openMenu = () => {
+        mobileMenu.classList.remove('closed');
+        // Prevent scrolling on the body when the menu is open (better UX for overlays)
+        document.body.style.overflow = 'hidden'; 
+    };
 
-    // Close mobile menu when a link is clicked
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden-mobile-menu');
-            const icon = mobileMenuBtn.querySelector('.mobile-menu-icon');
-            if (icon) {
-                icon.setAttribute('data-lucide', 'menu');
-                // Re-render icon if lucide is available
-                if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                }
-            }
-        });
+    // Function to close the menu
+    const closeMenu = () => {
+        mobileMenu.classList.add('closed');
+        // Restore scrolling on the body
+        document.body.style.overflow = ''; 
+    };
+
+    // --- Event Listeners ---
+
+    // 1. Open Menu Button
+    mobileMenuBtn.addEventListener('click', openMenu);
+
+    // 2. Close Menu Button (The 'X' icon inside the menu)
+    closeMenuBtn.addEventListener('click', closeMenu);
+
+    // 3. Close menu when a navigation link is clicked
+    // This handles both the regular links and the 'Order Online' button within the mobile menu
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
 }
-
 
 /**
  * 2. Simulated Form Submission for Newsletter
