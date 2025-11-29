@@ -1,14 +1,16 @@
 
         // --- Core Data and State ---
         const products = [
-            { id: 1, name: "Cardamom Latte", price: 5.50, category: "Coffee", image: "https://placehold.co/400x200/A8715A/FFFFFF?text=Cardamom+Latte" },
-            { id: 2, name: "Turmeric Gold Milk", price: 4.75, category: "Coffee", image: "https://placehold.co/400x200/FAE1C0/262626?text=Turmeric+Milk" },
-            { id: 3, name: "Classic Espresso Shot", price: 3.00, category: "Coffee", image: "https://placehold.co/400x200/262626/A8715A?text=Espresso" },
-            { id: 4, name: "Iced Masala Chai", price: 4.50, category: "Tea & Spices", image: "https://placehold.co/400x200/A8715A/FFFFFF?text=Iced+Chai" },
-            { id: 5, name: "Saffron Pistachio Croissant", price: 3.50, category: "Pastries & Snacks", image: "https://placehold.co/400x200/FAE1C0/262626?text=Croissant" },
-            { id: 6, name: "Date & Fig Danish", price: 4.00, category: "Pastries & Snacks", image: "https://placehold.co/400x200/262626/FAE1C0?text=Danish" },
-            { id: 7, name: "Single Origin Brew (Kenya)", price: 4.25, category: "Coffee", image: "https://placehold.co/400x200/A8715A/FFFFFF?text=Single+Origin" },
-            { id: 8, name: "Ginger Snap Cookie", price: 2.50, category: "Pastries & Snacks", image: "https://placehold.co/400x200/FAE1C0/262626?text=Cookie" },
+            // Prices updated for Indian Rupee (₹)
+            { id: 1, name: "Cardamom Latte", price: 180.00, category: "Coffee", image: "images/cardamom.jpg" },
+            { id: 2, name: "Cappuccino", price: 150.00, category: "Coffee", image: "images/coffee.png" },
+            { id: 3, name: "Classic Espresso Shot", price: 180.00, category: "Coffee", image: "images/classic espresso.jpg" },
+            { id: 4, name: "Normal Chai", price: 50.00, category: "Tea & Snaks", image: "images/normal chai.jpg" },
+            { id: 5, name: "Croissant", price: 190.00, category: "Pastries & Cakes", image: "images/croissant.jpg" },
+            { id: 6, name: "Danish", price: 200.00, category: "Pastries & Cakes", image: "images/danish.jpg" },
+            { id: 7, name: "Americano", price: 140.00, category: "Coffee", image: "images/americano.jpg" },
+            { id: 8, name: "Blue berry Cake", price: 150.00, category: "Pastries & Cakes", image: "images/blueberry.jpeg" },
+            { id: 9, name: "Pazham pori", price: 50.00, category: "Tea & Snaks", image: "images/pazhampori.jpeg" },
         ];
 
         let cart = [];
@@ -49,7 +51,7 @@
                                 <div class="product-info">
                                     <div>
                                         <div class="product-name">${product.name}</div>
-                                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                                        <div class="product-price">₹${product.price.toFixed(2)}</div>
                                     </div>
                                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
                                         Add to Order
@@ -120,7 +122,7 @@
                     const itemHtml = `
                         <div class="cart-item">
                             <span class="cart-item-name">${item.quantity} x ${item.name}</span>
-                            <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <span class="cart-item-price">₹${(item.price * item.quantity).toFixed(2)}</span>
                             <button class="remove-item-btn" onclick="removeFromCart(${item.instanceIds[0]})" title="Remove one ${item.name}">
                                 <i data-lucide="minus" style="width: 1rem; height: 1rem;"></i>
                             </button>
@@ -132,7 +134,7 @@
                 checkoutBtn.disabled = false;
             }
 
-            cartTotalEl.textContent = `$${total.toFixed(2)}`;
+            cartTotalEl.textContent = `₹${total.toFixed(2)}`;
             // Re-initialize Lucide icons for cart items (specifically the minus icon)
             lucide.createIcons();
         }
@@ -148,7 +150,7 @@
             const total = cart.reduce((sum, item) => sum + item.price, 0);
 
             // Display success message
-            checkoutMessageEl.textContent = `Order placed successfully! Total: $${total.toFixed(2)}. Thank you for choosing Spice Route Café!`;
+            checkoutMessageEl.textContent = `Order placed successfully! Total: ₹${total.toFixed(2)}. Thank you for choosing Spice Route Café!`;
             checkoutMessageEl.classList.remove('hidden');
             
             // Disable button and clear cart
@@ -171,4 +173,4 @@
             checkoutBtn.addEventListener('click', handleCheckout);
         });
         
-    
+   
