@@ -2,15 +2,21 @@
         // --- Core Data and State ---
         const products = [
             // Prices updated for Indian Rupee (₹)
-            { id: 1, name: "Cardamom Latte", price: 180.00, category: "Coffee", image: "images/cardamom.jpg" },
-            { id: 2, name: "Cappuccino", price: 150.00, category: "Coffee", image: "images/coffee.png" },
-            { id: 3, name: "Classic Espresso Shot", price: 180.00, category: "Coffee", image: "images/classic espresso.jpg" },
-            { id: 4, name: "Normal Chai", price: 50.00, category: "Tea & Snaks", image: "images/normal chai.jpg" },
-            { id: 5, name: "Croissant", price: 190.00, category: "Pastries & Cakes", image: "images/croissant.jpg" },
-            { id: 6, name: "Danish", price: 200.00, category: "Pastries & Cakes", image: "images/danish.jpg" },
-            { id: 7, name: "Americano", price: 140.00, category: "Coffee", image: "images/americano.jpg" },
-            { id: 8, name: "Blue berry Cake", price: 150.00, category: "Pastries & Cakes", image: "images/blueberry.jpeg" },
-            { id: 9, name: "Pazham pori", price: 50.00, category: "Tea & Snaks", image: "images/pazhampori.jpeg" },
+            { id: 1, name: "Cardamom Latte", price: 130.00, category: "Coffee", image: "images/cardamom.jpg" },
+            { id: 2, name: "Cappuccino", price: 99.00, category: "Coffee", image: "images/coffee.png" },
+            { id: 3, name: "Classic Espresso", price: 130.00, category: "Coffee", image: "images/espresso10.png" },
+            { id: 4, name: "Normal Chai", price: 20.00, category: "Tea & Snaks", image: "images/normal chai.jpg" },
+            { id: 5, name: "Croissant (1pc)", price: 150.00, category: "Pastries & Cakes", image: "images/croissant.jpg" },
+            { id: 6, name: "Danish (1pc)", price: 120.00, category: "Pastries & Cakes", image: "images/danish.jpg" },
+            { id: 7, name: "Americano", price: 90.00, category: "Coffee", image: "images/americano.jpg" },
+            { id: 8, name: "Blue berry Cake (1pc)", price: 89.00, category: "Pastries & Cakes", image: "images/blueberry.jpeg" },
+            { id: 10, name: "strawberry Cake (1pc)", price: 99.00, category: "Pastries & Cakes", image: "images/strawberry.jpeg" },
+            { id: 9, name: "Pazham pori", price: 30.00, category: "Tea & Snaks", image: "images/pazhampori.jpeg" },
+            { id: 11, name: "Shawarma wrap", price: 70.00, category: "Tea & Snaks", image: "images/shawarma01.jpg" },
+            { id: 12, name: "Veg Sandwich", price: 70.00, category: "Tea & Snaks", image: "images/vegsand.jpg" },
+            { id: 13, name: "Chicken Sandwich", price: 90.00, category: "Tea & Snaks", image: "images/chisand.jpg" },
+            { id: 14, name: "Chicken Sandwich & Fries(100g) Combo", price: 140.00, category: "Tea & Snaks", image: "images/chisandcombo.jpg" },
+            { id: 15, name: "Chocolate Cake (1pc)", price: 99.00, category: "Pastries & Cakes", image: "images/chocolatecake.jpg" },
         ];
 
         let cart = [];

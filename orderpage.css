@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             color: var(--text-primary);
-            background-color: white;
+            background-color: #FAE1C0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
