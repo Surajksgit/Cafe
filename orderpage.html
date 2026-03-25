@@ -3,115 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Online - Spice Route Café</title>
-    <link rel="stylesheet" href="orderpage.css">
-    <script src="orderpage.js" defer></script>
-     <link rel="icon"  href="images/icon22.png">
-    <!-- Importing Lucide icons -->
+    <title>Order Online | Spice Route Cafe</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="cafe.css">
+    <link rel="stylesheet" href="orderpage.css">
 </head>
 
-<body>
-
-    <header class="new-header">
-        <div class="header-inner">
-            <a href="index.html" class="new-logo">
-                <i data-lucide="coffee" class="logo-icon"></i>
-                Spice Route Café
+<body class="dark-theme">
+    <!-- Navigation -->
+    <header class="glass-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">S</span>pice Route Cafe
             </a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">The Menu</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="orderpage.html" class="nav-btn magnetic-btn active">Your Order</a>
+            </nav>
 
-            <div class="new-actions">
-                <a href="index.html" class="order-btn">
-                    Back to Home
-                </a>
-            </div>
+            <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-overlay" id="mobile-overlay">
+            <nav class="mobile-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">The Menu</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="orderpage.html" class="nav-btn magnetic-btn active">Your Order</a>
+            </nav>
         </div>
     </header>
 
     <main class="main-content">
-        <div class="order-layout">
+        <div class="order-layout container">
             
             <!-- Menu Section -->
             <section class="menu-section">
-                <h1 class="menu-title">The Menu</h1>
+                <header class="menu-page-header reveal-up">
+                    <h1 class="section-title">The Collection</h1>
+                    <p class="section-subtitle">Select from our signature blends and curated treats.</p>
+                </header>
+
                 <div id="products-list">
-                    <!-- Products will be dynamically loaded here -->
+                    <!-- Products will be dynamically loaded here by orderpage.js -->
+                    <div class="loading-state">Curating the collection...</div>
                 </div>
             </section>
 
             <!-- Cart Section -->
-            <aside class="cart-section">
-                <div class="cart-container">
+            <aside class="cart-section" id="cart">
+                <div class="cart-container glass-card reveal-up">
                     <h2 class="cart-heading">
-                        <i data-lucide="shopping-cart" class="logo-icon"></i> 
+                        <i data-lucide="shopping-bag"></i> 
                         Your Order
                     </h2>
                     
-                    <div id="cart-items">
-                        <!-- Cart items will be dynamically loaded here -->
-                        <p class="text-gray-400 text-sm">Your cart is currently empty. Add some spice!</p>
+                    <div id="cart-items" class="custom-scrollbar">
+                        <!-- Cart items loaded here -->
+                        <p class="empty-msg">Your cart is empty. Start your journey.</p>
                     </div>
 
-                    <div class="cart-summary">
-                        <span>Total:</span>
-                        <span id="cart-total">₹0.00</span>
+                    <div class="cart-summary-premium">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="cart-total">₹0.00</span>
+                        </div>
                     </div>
 
-                    <button id="checkout-btn" class="checkout-btn" disabled>
+                    <button id="checkout-btn" class="btn btn-gold w-full magnetic-btn" disabled>
                         Proceed to Checkout
                     </button>
-                    <div id="checkout-message" class="newsletter-message hidden" style="color: #86EFAC; margin-top: 1rem;"></div>
+                    <div id="checkout-message" class="checkout-status hidden"></div>
                 </div>
             </aside>
 
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
+    <footer class="premium-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2 class="logo"><span class="logo-accent">S</span>pice Route Cafe</h2>
+                <p>Curating moments of excellence through the art of roasting.</p>
+            </div>
             
-            <div>
-                <a style="text-decoration: none; font-weight: bolder; font-size: 20px; color: #D97706; " href="#" class="logo footer-logo">
-                    <i data-lucide="coffee" class="logo-icon"></i>
-                    Spice Route Café
-                </a>
-                <p class="footer-slogan">Brewed to Perfection, Served With Love</p>
-            </div>
-
-            <div id="contact" class="newsletter-signup">
-                <p class="newsletter-heading">
-                    Join our newsletter to receive exclusive updates and news!
-                </p>
-                <form onsubmit="handleNewsletterSignup(event)" class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required
-                            class="newsletter-input">
-                    <button type="submit" class="btn-subscribe">
-                        Subscribe
-                    </button>
+            <div class="footer-newsletter">
+                <p>Join the Connoisseurs Circle</p>
+                <form class="footer-form" onsubmit="handleNewsletterSignup(event)">
+                    <input type="email" placeholder="Email Address" required>
+                    <button type="submit">Join <i data-lucide="send"></i></button>
+                    <p id="newsletter-message" class="hidden" style="color: var(--accent-gold); font-size: 0.9rem; margin-top: 10px;"></p>
                 </form>
-                <div id="newsletter-message" class="newsletter-message hidden"></div>
             </div>
 
-            <div class="footer-links">
-                <a href="#" class="footer-link-item">Privacy</a>
-                <a href="#" class="footer-link-item">Terms</a>
-                <a href="#" class="footer-link-item">Cookies</a>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
             </div>
-
         </div>
-
-        <div class="copyright-section">
-            <p>&copy; 2025 Spice Route Café. All Rights Reserved.</p>
-            <div class="social-icons-footer">
-                <a href="twitter_SpiceRouteCafe"><i data-lucide="twitter" class="social-icon-sm"></i></a>
-                <a href="instagram_SpiceRouteCafe"><i data-lucide="instagram" class="social-icon-sm"></i></a>
-                <a href="facebook_SpiceRouteCafe"><i data-lucide="facebook" class="social-icon-sm"></i></a>
-                <a href="SpiceRouteCafe@gmail"><i data-lucide="mail" class="social-icon-sm"></i></a>
-            </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Spice Route Cafe. Crafted for Excellence.</p>
         </div>
     </footer>
 
-    
+    <!-- Scripts -->
+    <script src="orderpage.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>

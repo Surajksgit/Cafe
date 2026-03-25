@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Menu | Spice Route Cafe</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="cafe.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body class="dark-theme">
+    <!-- Navigation -->
+    <header class="glass-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">S</span>pice Route Cafe
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link active">The Menu</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="orderpage.html" class="nav-btn magnetic-btn">Order Online</a>
+            </nav>
+
+            <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-overlay" id="mobile-overlay">
+            <nav class="mobile-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link active">The Menu</a>
+                <a href="index.html#locations" class="nav-link">Locations</a>
+                <a href="orderpage.html" class="nav-btn magnetic-btn">Order Online</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="menu-main">
+        <!-- Hero Section -->
+        <section class="menu-hero">
+            <div class="container text-center">
+                <h1 class="hero-title reveal-up">The Collection</h1>
+                <p class="hero-subtitle reveal-up">A curated journey through the finest beans and artisanal crafts.</p>
+            </div>
+        </section>
+
+        <!-- Menu Content -->
+        <div class="container menu-grid-container">
+            
+            <!-- Category: The Roastery -->
+            <section class="menu-category" id="coffee">
+                <div class="category-header reveal-up">
+                    <span class="cat-label">01</span>
+                    <h2 class="category-title">The Roastery</h2>
+                    <p class="category-desc">Our signature espresso blends and single-origin selections.</p>
+                </div>
+                
+                <div class="menu-items-fluid">
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/cardamom.jpg" alt="Cardamom Latte" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Cardamom Latte</h3>
+                                <span class="item-price">₹130.00</span>
+                            </div>
+                            <p>Espresso infused with freshly ground cardamom and silky steamed milk.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/espresso10.png" alt="Signature Espresso" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Signature Espresso</h3>
+                                <span class="item-price">₹130.00</span>
+                            </div>
+                            <p>A double-shot of our house roast with notes of dark chocolate and citrus.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/coffee.png" alt="Velvet Cappuccino" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Velvet Cappuccino</h3>
+                                <span class="item-price">₹99.00</span>
+                            </div>
+                            <p>Classic balance of espresso, steamed milk, and a thick layer of foam.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category: Heritage Blends -->
+            <section class="menu-category" id="tea">
+                <div class="category-header reveal-up">
+                    <span class="cat-label">02</span>
+                    <h2 class="category-title">Heritage Blends</h2>
+                    <p class="category-desc">Traditional flavors reimagined for the modern palate.</p>
+                </div>
+                
+                <div class="menu-items-fluid">
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/masala_chai.jpg" alt="Masala Chai" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Masala Chai</h3>
+                                <span class="item-price">₹20.00</span>
+                            </div>
+                            <p>Strong black tea brewed with house-made spice blend and fresh milk.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/shawarma01.jpg" alt="Shawarma Royale" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Shawarma Royale</h3>
+                                <span class="item-price">₹70.00</span>
+                            </div>
+                            <p>Slow-roasted chicken wrap with garlic toum and pickled vegetables.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category: Artisan Pastries -->
+            <section class="menu-category" id="pastries">
+                <div class="category-header reveal-up">
+                    <span class="cat-label">03</span>
+                    <h2 class="category-title">Artisan Pastries</h2>
+                    <p class="category-desc">Handcrafted treats to complement your brew.</p>
+                </div>
+                
+                <div class="menu-items-fluid">
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/croissant.jpg" alt="Golden Croissant" onerror="this.src='images/menu_croissant.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Golden Croissant</h3>
+                                <span class="item-price">₹150.00</span>
+                            </div>
+                            <p>Flaky, butter-rich layers with a honeycomb interior. Baked fresh daily.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-premium reveal-up">
+                        <div class="item-img-box">
+                            <img src="images/chocolatecake.jpg" alt="Dark Truffle Cake" onerror="this.src='images/hero_espresso.png'">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <h3>Dark Truffle Cake</h3>
+                                <span class="item-price">₹99.00</span>
+                            </div>
+                            <p>Decadent layers of cocoa and espresso-infused ganache.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="premium-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2 class="logo"><span class="logo-accent">S</span>pice Route Cafe</h2>
+                <p>Curating moments of excellence through the art of roasting.</p>
+            </div>
+            
+            <div class="footer-newsletter">
+                <p>Join the Connoisseurs Circle</p>
+                <form class="footer-form" onsubmit="handleNewsletterSignup(event)">
+                    <input type="email" placeholder="Email Address" required>
+                    <button type="submit">Join <i data-lucide="send"></i></button>
+                    <p id="newsletter-message" class="hidden" style="color: var(--accent-gold); font-size: 0.9rem; margin-top: 10px;"></p>
+                </form>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Spice Route Cafe. Crafted for Excellence.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Initialization -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reveal animations
+            const reveals = document.querySelectorAll('.reveal-up');
+            reveals.forEach((el) => {
+                gsap.from(el, {
+                    y: 60,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 95%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            // Navigation behavior
+            const nav = document.querySelector('.glass-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

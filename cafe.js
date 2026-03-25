@@ -1,74 +1,174 @@
-// Initialize Lucide Icons on document load
+// Register GSAP Plugins
+try {
+    gsap.registerPlugin(ScrollTrigger);
+} catch (e) {
+    console.warn("GSAP or ScrollTrigger not loaded correctly.");
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if lucide object is available
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-        lucide.createIcons();
-    }
+    // Initializing interactions
+    initNavigation();
+    initHeroAnimations();
+    initRevealAnimations();
+    initMagneticButtons();
+    initSVGDrawing();
     
-    // Attach event listeners after DOM is loaded
-    setupMobileMenu();
+    // Aggressive refresh to ensure all triggers are correctly placed
+    window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+    });
 });
 
-// Function to handle the Mobile Menu Toggle logic for the new full-screen design
-function setupMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const closeMenuBtn = document.getElementById('close-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
-    
-    // Exit if essential elements aren't found
-    if (!mobileMenuBtn || !closeMenuBtn || !mobileMenu) return; 
+// 1. Navigation Scroll Behavior
+function initNavigation() {
+    const nav = document.querySelector('.glass-nav');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileOverlay = document.getElementById('mobile-overlay');
 
-    // --- Helper Functions ---
-    
-    // Function to open the menu
-    const openMenu = () => {
-        mobileMenu.classList.remove('closed');
-        // Prevent scrolling on the body when the menu is open (better UX for overlays)
-        document.body.style.overflow = 'hidden'; 
-    };
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
 
-    // Function to close the menu
-    const closeMenu = () => {
-        mobileMenu.classList.add('closed');
-        // Restore scrolling on the body
-        document.body.style.overflow = ''; 
-    };
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            if (mobileOverlay) mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileToggle.classList.contains('active') ? 'hidden' : '';
+        });
+    }
 
-    // --- Event Listeners ---
+    // Close overlay on link click
+    if (mobileOverlay) {
+        const links = mobileOverlay.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+}
 
-    // 1. Open Menu Button
-    mobileMenuBtn.addEventListener('click', openMenu);
+// 2. Hero Section Parallax and Reveals
+function initHeroAnimations() {
+    if (document.querySelector('.hero-parallax-img')) {
+        gsap.to('.hero-parallax-img', {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero-section',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+    }
 
-    // 2. Close Menu Button (The 'X' icon inside the menu)
-    closeMenuBtn.addEventListener('click', closeMenu);
+    const heroTl = gsap.timeline();
+    heroTl.from('.title-line', {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: 'expo.out'
+    })
+    .from('.hero-subtext', {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+    }, '-=0.8')
+    .from('.hero-actions .btn', {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out'
+    }, '-=0.6');
+}
 
-    // 3. Close menu when a navigation link is clicked
-    // This handles both the regular links and the 'Order Online' button within the mobile menu
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
+// 3. Staggered Reveal for Sections and Cards
+function initRevealAnimations() {
+    // General reveals
+    const revealElements = document.querySelectorAll('.reveal-up:not(.menu-card)');
+    revealElements.forEach((el) => {
+        gsap.from(el, {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 95%', 
+                toggleActions: 'play none none none'
+            }
+        });
+    });
+
+    // Robust reveal for menu cards
+    const menuCards = document.querySelectorAll('.menu-card');
+    if (menuCards.length > 0) {
+        gsap.from(menuCards, {
+            y: 60,
+            opacity: 0,
+            scale: 0.9,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.menu-items-fluid',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+}
+
+// 4. Magnetic Button Interaction
+function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach((btn) => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.35, y: y * 0.35, duration: 0.4, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.3)' });
+        });
     });
 }
 
-/**
- * 2. Simulated Form Submission for Newsletter
- * @param {Event} event - The form submission event.
- */
+// 5. SVG Line Drawing Transition
+function initSVGDrawing() {
+    const paths = document.querySelectorAll('.draw-line');
+    paths.forEach((path) => {
+        gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: path,
+                start: 'top 95%',
+                end: 'bottom 5%',
+                scrub: 1
+            }
+        });
+    });
+}
+
+// Newsletter Handling
 function handleNewsletterSignup(event) {
-    event.preventDefault(); // Stop the form from submitting normally
-    
-    const messageBox = document.getElementById('newsletter-message');
-    const emailInput = event.target.querySelector('input[type="email"]');
-
-    if (!messageBox || !emailInput) return;
-
-    // Show success message
-    messageBox.textContent = 'Subscribed! Check your inbox for confirmation.';
-    messageBox.classList.remove('hidden');
-    
-    // Clear input and hide message after a few seconds
-    setTimeout(() => {
-        emailInput.value = '';
-        messageBox.classList.add('hidden');
-    }, 4000); 
+    event.preventDefault();
+    const message = event.target.querySelector('#newsletter-message');
+    if (message) {
+        message.innerText = "Welcome to the Spice Route. Exclusive updates await.";
+        message.classList.remove('hidden');
+    }
+    event.target.reset();
 }
